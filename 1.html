@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>قَعُودٌ في عِيَادَةِ الأَسْنَانِ </title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,shrink-to-fit=no, user-scalable=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<script src="js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="css/default.css" />
+<link rel="stylesheet" type="text/css" href="css/bookblock.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/story.css?v=1.1" />
+
+<script src="js/modernizr.custom.js"></script>
+<script src="js/jquerypp.custom.js"></script>
+<script src="js/jquery.bookblock.js"></script>
+
+
+</head>
+
+<body>
+        <audio controls id="flipAudioFile" preload="auto" src="audio/flip.mp3" style="display: none">
+        </audio>
+        <audio controls id="audiofile" style="display: none">
+            <source src="audio/story-01_vo.mp3"  type="audio/mp3">
+        </audio>
+        <div class="play_btn_div">
+            <img class="img-fluid play_btn" onclick="startStory();" src="play_btn.gif">
+        </div>
+        <div class="row loading_div" style="display: none;">
+            <a href="javascript:void(0)" class="text-center" style="width: 100%;">
+                <img class="img-fluid" src="loading.gif">
+            </a>
+        </div>
+        <div class="container-fluid p-0">
+
+
+        
+        <div class="bb-custom-wrapper" style="display: none;">
+            <div id="bb-bookblock" class="bb-bookblock">
+                <div class="bb-item">
+                    <div class="bb-custom-side">
+                        <img src="images/demo1-cover.jpg" class="img-fluid"  alt="cover"/>
+                    </div>
+                </div> 
+
+                <div class="bb-item">
+                    <div class="bb-custom-side">
+                        <img src="images/demo1-slide01.jpg" class=" img-fluid" alt="image01"/>
+                    </div>
+                </div>
+
+                <div class="bb-item">
+                    <div class="bb-custom-side">
+                        <img src="images/demo1-slide02.jpg" class="img-fluid" alt="image01"/>
+                    </div>
+                </div>
+                <div class="bb-item">
+                    <div class="bb-custom-side">
+                        <img src="images/demo1-slide03.jpg" class="img-fluid" alt="image01"/>
+                    </div>
+                </div>
+                <div class="bb-item">
+                    <div class="bb-custom-side">
+                        <img src="images/demo1-slide04.jpg" class="img-fluid" alt="image01"/>
+                    </div>
+                </div>
+                <div class="bb-item">
+                    <div class="bb-custom-side">
+                        <img src="images/demo1-slide05.jpg" class="img-fluid" alt="image01"/>
+                    </div>
+                </div>
+                <div class="bb-item">
+                    <div class="bb-custom-side">
+                        <img src="images/demo1-slide06.jpg" class="img-fluid" alt="image01"/>
+                    </div>
+                </div>				
+                <div class="bb-item">
+                    <div class="bb-custom-side">
+                        <img src="images/demo1-slide07.jpg" class="img-fluid" alt="image01"/>
+                    </div>
+                </div>
+                <div class="bb-item">
+                    <div class="bb-custom-side">
+                        <img src="images/demo1-slide08.jpg" class="img-fluid" alt="image01"/>
+                    </div>
+                </div>
+                <div class="bb-item">
+                    <div class="bb-custom-side">
+                        <img src="images/demo1-slide09.jpg" class="img-fluid" alt="image01"/>
+                    </div>
+                </div>
+                <div class="bb-item">
+                    <div class="bb-custom-side">
+                        <img src="images/demo1-slide10.jpg" class="img-fluid" alt="image01"/>
+                    </div>
+                </div>
+                <div class="bb-item">
+                    <div class="bb-custom-side">
+                        <img src="images/demo1-slide11.jpg" class="img-fluid" alt="image01"/>
+                    </div>
+                </div>
+                <div class="bb-item">
+                    <div class="bb-custom-side">
+                        <img src="images/demo1-slide12.jpg" class="img-fluid" alt="image01"/>
+                    </div>
+                </div>
+                <div class="bb-item">
+                    <div class="bb-custom-side">
+                        <img src="images/demo1-slide13.jpg" class="img-fluid" alt="image01"/>
+                    </div>
+                </div>
+                <div class="bb-item">
+                    <div class="bb-custom-side">
+                        <img src="images/demo1-slide14.jpg" class="img-fluid" alt="image01"/>
+                    </div>
+                </div>
+              
+                
+                    <h1 class="line centered" id="subtitles" style="direction: rtl;"></h1>
+            </div>
+
+        <nav class="bb-custom-wrapper mt-0">
+            <a id="bb-nav-next"  href="#" class="bb-custom-icon"><img src="back.png" width="50" style="margin-top: -28px;"></a>
+
+
+            <span id="playpause" style="cursor: pointer;">
+                <img src="stop-button.png" width="50" style="margin-top: -28px"/>
+            </span>
+
+            <span style="cursor: pointer;" id="replay">
+                <img src="repeat.png" width="50" style="margin-top: -28px"/>
+            </span>
+            <a  id="bb-nav-prev" href="#" class="bb-custom-icon"><img src="next.png" width="50" style="margin-top: -28px;"></a>
+
+
+        </nav>
+        </div>
+    </div>
+<input type="hidden" name="latest_slide" id="latest_slide" value="0" />
+
+    <style>
+        
+    </style>
+
+    <script>
+        
+
+       
+        var start_data = [{"start_time":0.00,"end_time":1.50,"class":"page0"},{"start_time":1.60 ,"end_time":10.30,"class":"page1"},{"start_time":10.50,"end_time":20.05,"class":"page2"},{"start_time":20.08,"end_time":25.50,"class":"page3"},{"start_time":25.80,"end_time":30.80,"class":"page4"},{"start_time":31.00,"end_time":39.30,"class":"page5"},{"start_time":39.50,"end_time":46.56,"class":"page6"},{"start_time":46.58,"end_time":52.58,"class":"page7"},{"start_time":52.75,"end_time":59.56,"class":"page8"},{"start_time":59.65,"end_time":63.95,"class":"page9"},{"start_time":64.11,"end_time":70.19,"class":"page10"},{"start_time":70.50,"end_time":75.23,"class":"page11"},{"start_time":75.56,"end_time":83.50,"class":"page12"},{"start_time":84.00,"end_time":90.80,"class":"page13"},{"start_time":91.04,"end_time":96.22,"class":"page14"}];
+        var audioPlayer = document.getElementById("audiofile");
+        var flipAudioFile = document.getElementById("flipAudioFile");
+
+        function play() {
+            audioPlayer.play();
+            audioPlayer.currentTime = 0;
+            setInterval(function(){
+                var audioPlayer = document.getElementById("audiofile");
+                if(audioPlayer.currentTime >= 0 && audioPlayer.readyState==4){
+                    $(".loading_div").hide();
+                    $(".bb-custom-wrapper").show();
+
+                }
+
+            }, 500);
+
+        }
+        function startStory() {
+            $(".play_btn_div").hide();
+            $(".loading_div").show();
+            play();
+
+        }
+
+        ( function(win, doc) {
+
+            var audioPlayer = doc.getElementById("audiofile");
+            var subtitles = doc.getElementById("subtitles");
+            $("#playpause").on("click",function(){
+                if (!$("#audiofile")[0].paused){
+
+                    $("#audiofile")[0].pause();
+                    $("#playpause > img").attr("src","play-button.png");
+                }else{
+
+                    $("#audiofile")[0].play();
+                    $("#playpause > img").attr("src","stop-button.png");
+                }
+            })
+
+            $(".bb-custom-icon").on("click",function () {
+                $("#flipAudioFile")[0].play();
+            });
+            $(".bb-custom-icon").on("click",function () {
+                $("#flipAudioFile")[0].play();
+            });
+
+            var syncData = {
+                0:[
+{"end": " 00.46 ", "start": "0.0", "text": " أُمِّي<br> "},
+{"end": "00.96", "start": " 00.47", "text": " تَقُودُ "},
+{"end": " 01.50", "start": " 00.97", "text": " بِسَلَامَةٍ "},
+
+
+
+
+                ], 
+                1 : [/*01*/
+{"end": " 02.10", "start": " 01.51", "text": " دَخَلَتْ "},
+{"end": " 02.65", "start": " 02.11", "text": " أُمِّي "},
+{"end": " 03.10", "start": " 02.66", "text": " البَيْتَ، "},
+{"end": " 03.68", "start": "03.11", "text": " فَرِحَةً<br> "},
+{"end": " 04.13", "start": " 03.69", "text": " تَحْمِلُ "},
+{"end": " 05.00", "start": " 04.14", "text": " بِيَدِهَا ُ "},
+{"end": " 05.67", "start": " 05.01", "text": " رُخْصَةَ "},
+{"end": " 06.13", "start": " 05.68", "text": " القِيَادَةِ.<br> "},
+{"end": " 07.27", "start": " 06.13", "text": " الحَمْدُ للهِ!<br> "},
+ 
+{"end": " 08.60", "start": " 08.02", "text": " نَجَحَتْ "},
+{"end": " 08.80", "start": " 08.61", "text": " أُمِّي  "},
+{"end": " 09.60", "start": " 08.81", "text": " فِي اِخْتِبَارِ <br> "},
+{"end": " 10.17", "start": "09.61", "text": " القِيَادَةِ!"},
+
+
+                   
+
+                
+                ],
+                2 : [/*2*/
+               
+{"end": " 11.01", "start": " 10.50", "text": " قُلْتُ "},
+{"end": " 11.63", "start": " 11.02", "text": " لِأُمِّي:  "},
+{"end": " 12.16", "start": " 11.64", "text": " مُبَارَكٌ "},
+{"end": " 13.15", "start": " 12.17", "text": " يَا أُمِّي!<br>"},
+{"end": " 13.79", "start": " 13.17", "text": " قَالَ "},
+{"end": " 14.66", "start": " 14.00", "text": " أَبِي:  "},
+{"end": " 15.18", "start": " 14.68", "text": " هَيَّا نَحْتَفِلُ "},
+{"end": " 16.05", "start": " 15.20", "text": " فِي بِيْتِ "},
+{"end": " 16.66", "start": " 16.06", "text": " الجَدِّ!<br> "},
+{"end": " 17.16", "start": " 16.67", "text": " وَتَقُودُ "},
+{"end": " 18.09", "start": " 17.17", "text": "  أُمُّكُمْ بِنا "},
+{"end": " 19.00", "start": " 18.10", "text": "  السَّيَّارَةَ "},
+{"end": " 20.05", "start": " 19.01", "text": " إِلى هُنَاكَ. "},
+
+
+
+
+                    	
+                ],
+                3 : [/*3*/
+               
+{"end": " 20.64", "start": " 20.08", "text": " رَكِبْنا "},
+{"end": " 21.15", "start": " 20.65", "text": " سَيَّارَةَ "},
+{"end": " 21.76", "start": " 21.16", "text": " أَبِي "},
+{"end": " 22.20", "start": " 21.77", "text": "الزَّرْقَاءَ.<br>"},
+{"end": " 23.10", "start": " 22.21", "text": " جَلسْتُ فِي "},
+{"end": " 24.04", "start": " 23.11", "text": " مَقْعَدِي، "},
+{"end": " 24.61", "start": " 24.05", "text": " وَرَبَطَ "},
+{"end": " 25.02", "start": " 24.62", "text": " أَبِي "},
+{"end": " 25.53", "start": " 25.03", "text": " حزامي."},
+
+
+                                   
+                    
+                ],
+                4 : [/*4*/
+{"end": " 26.08", "start": " 25.24", "text": " وَضَعَتْ "},
+{"end": " 26.62", "start": " 26.09", "text": " أُمِّي "},
+{"end": " 27.02", "start": " 26.63", "text": " أُخْتِي "},
+{"end": " 27.66", "start": " 27.03", "text": " الصَغِيرَةَ "},
+{"end": " 28.00", "start": " 27.67", "text": " (لِيْنَا) "},
+{"end": " 28.64", "start": " 28.01", "text": " فِي كُرْسِيِّ "},
+{"end": " 29.11", "start": " 28.65", "text": " الرَّضِيعِ،  "},
+{"end": " 30.00", "start": " 29.12", "text": " وَرَبَطَتْ "},
+{"end": " 30.80", "start": " 30.01", "text": " حزامها."},
+
+
+
+
+
+	
+                   
+                ],
+                5 : [/*5*/
+{"end": " 31.53", "start": " 31.00", "text": " رَبَطَ "},
+{"end": " 31.89", "start": " 31.54", "text": " أَبِي "},
+{"end": " 32.30", "start": " 31.90", "text": " وَأُمِّي "},
+{"end": " 32.85", "start": " 32.31", "text": " حِزَامَ "},
+{"end": " 33.22", "start": " 32.86", "text": " الأَمَانِ.<br>"},
+{"end": " 34.02", "start": " 33.23", "text": " قَالَتْ "},
+{"end": " 34.61", "start": " 34.03", "text": " أُمِّي: "},
+{"end": " 35.27", "start": " 34.64", "text": " بِسْمِ اللهِ، "},
+{"end": " 36.21", "start": " 35.28", "text": " هَلْ أَنْتُمْ "},
+{"end": " 38.00", "start": " 36.22", "text": " مُسْتَعِدُونَ؟ "},
+{"end": " 38.63", "start": " 38.02", "text": " ثُمَّ قَادَتْ "},
+{"end": " 39.23", "start": " 38.64", "text": " السَّيَّارَةَ."},
+
+
+
+
+                   ],
+                6 : [/*6*/
+
+{"end": " 40.08", "start": " 39.50", "text": " عِنْدَمَا "},
+{"end": " 40.67", "start": " 40.09", "text": " تَكُونُ "},
+{"end": " 41.12", "start": " 40.68", "text": " الإشَارَةُ "},
+{"end": " 42.05", "start": " 41.13", "text": " خَضْرَاءَ؛ "},
+{"end": " 42.61", "start": " 42.07", "text": " تَعْبُرُ "},
+{"end": " 43.01", "start": " 42.62", "text": " أُمِّي "},
+{"end": " 44.00", "start": "43.02", "text": " التَّقَاطُعَ، "},
+{"end": " 44.69", "start": " 44.01", "text": " وَتَقِفُ "},
+{"end": " 45.04", "start": " 44.70", "text": " عِنْدَمَا "},
+{"end": " 45.67", "start": " 45.05", "text": " تَكُونُ <br>"},
+{"end": " 46.05", "start": " 45.68", "text": " الإشَارَةُ "},
+{"end": " 46.56", "start": " 46.06", "text": " حَمْرَاءَ."},
+
+
+						
+                   			
+                ],
+                7 : [/*7*/
+
+{"end": " 47.08", "start": " 46.58", "text": " قَالَ "},
+{"end": " 47.65", "start": " 47.09", "text": " أَبِي: "},
+{"end": " 48.21", "start": " 47.66", "text": " مَا رَأْيُكُمْ "},
+{"end": " 49.12", "start": " 48.22", "text": " أَنْ نَشْتَرِيَ "},
+{"end": " 50.05", "start": " 49.13", "text": " كَعْكًا؛ "},
+{"end": "50.66", "start": " 50.06", "text": " لِنَحْتَفِلَ "},
+{"end": "51.15", "start": " 50.67", "text": " بِهَذِهِ "},
+{"end": " 52.05", "start": " 51.16", "text": " المُنَاسَبَةِ "},
+{"end": " 52.58", "start": " 52.06", "text": " السَعِيدَةِ؟"},
+
+
+
+
+
+                ],
+                8 : [/*8*/
+
+{"end": " 53.14", "start": " 52.60", "text": " أَوْقَفَتْ "},
+{"end": " 53.64", "start": " 53.15", "text": " أُمِّي "},
+{"end": " 54.13", "start": " 53.65", "text": " السَّيَّارَةَ "},
+{"end": "55.08", "start": " 54.14", "text": " بِمَهَارَةٍ "},
+{"end": "55.64", "start": "55.09", "text": " أَمَامَ "},
+{"end": "56.05", "start": "55.65", "text": " مَحَلِّ "},
+{"end": "57.05", "start": "56.06", "text": " الحَلَوِيَّاتِ.<br>"},
+{"end": "57.76", "start": "57.10", "text": " دَخَلْنَا "},
+{"end": "58.17", "start": "57.77", "text": " جَمِيعًا "},
+{"end": "59.04", "start": "58.18", "text": " لِنَخْتَارَ "},
+{"end": "59.56", "start": "59.05", "text": " الكَعْكَةَ."},
+
+
+
+
+                   				
+                ],
+                9 : [/*9*/
+
+{"end": "60.16", "start": "59.57", "text": " اِخْتَرْنَا "},
+{"end": "60.90", "start": "60.17", "text": " كَعْكَةَ "},
+{"end": "61.60", "start": "60.91", "text": " التَّمْرِ،  "},
+{"end": "62.25", "start": "61.62", "text": " هي المُفَضَّلَةُ "},
+{"end": "63.04", "start": "62.26", "text": " لَدَى "},
+{"end": "63.68", "start": "63.05", "text": " جَدِّي "},
+{"end": "64.10", "start": "63.69", "text": " وَجَدَّتِي. "},
+
+               
+                ],
+                10:[
+
+{"end": "65.02", "start": "64.11", "text": " فِي الطَّرِيقِ،  "},
+{"end": "65.60", "start": "65.03", "text": " شَاهَدْتُ "},
+{"end": "66.09", "start": "65.61", "text": " سَيَّارَةَ "},
+{"end": "66.68", "start": "66.10", "text": " شَحْنٍ "},
+{"end": "67.11", "start": "66.69", "text": " كَبِيرَةً، "},
+
+{"end": "68.04", "start": "67.12", "text": " وَحَافِلَةَ "},
+
+{"end": "69.02", "start": "68.05", "text": " رُكَّابٍ، "},
+{"end": "69.76", "start": "69.03", "text": " وَدَرَّاجَةً "},
+{"end": "70.23", "start": "69.77", "text": " نَارِّيَةً. "},
+
+
+
+
+
+                ], 
+                11:[
+
+{"end": "71.12", "start": "70.30", "text": " ثُمَّ رَأْيتُ "},
+{"end": "72.01", "start": "71.13", "text": " مَحَطَّةً "},
+{"end": "72.69", "start": "72.02", "text": " لِلْقِطَارِ، "},
+{"end": "73.20", "start": "72.70", "text": " أَعْجَبَنِي <br>"},
+{"end": "73.85", "start": "73.21", "text": " الجِسْرُ "},
+{"end": "74.40", "start": "73.86", "text": " الذي يَمُرُ "},
+{"end": "75.23", "start": "74.41", "text": " مِنْهُ القِطَارُ!"},
+
+
+
+                ], 
+                12:[
+
+{"end": "76.11", "start": "75.56", "text": "وَصَلْنَا "},
+
+{"end": "76.68", "start": "76.12", "text": " إلى بَيْتِ "},
+{"end": "77.19", "start": "76.69", "text": " جَدِّي،  "},
+{"end": "78.09", "start": "77.21", "text": " وَرَأَيتُ َ "},
+
+{"end": "78.67", "start": "78.10", "text": " سَيَّارَةَ <br>"},
+{"end": "79.10", "start": "78.68", "text": " خَالِيَ "},
+{"end": "79.68", "start": "79.11", "text": " السَّودَاءَ "},
+{"end": "80.12", "start": "79.69", "text": " خَارِجَ "},
+{"end": "80.79", "start": "80.13", "text": " البَيْتِ.. <br>"},
+{"end": "81.65", "start": "81.00", "text": " يَا لِلسَّعَادَةِ! "},
+{"end": "82.40", "start": "81.66", "text": " سَأَلْعَبُ مَعَ "},
+
+{"end": "83.50", "start": "82.41", "text": " أَولَادِهِ.."},
+
+
+
+
+
+
+                ], 
+                13:[
+
+{"end": "84.19", "start": "83.80", "text": " أَوْقَفَتْ "},
+{"end": "84.79", "start": "84.20", "text": " أُمِّي "},
+{"end": "85.40", "start": "84.80", "text": " سَيَّارَتَنَا، "},
+{"end": "86.20", "start": "85.90", "text": " ثُمَّ حَمَلَتْ "},
+{"end": "87.02", "start": "86.21", "text": " أُخْتِي <br>"},
+{"end": "87.65", "start": "87.03", "text": " الصَّغِيرَةَ، "},
+{"end": "88.09", "start": "87.66", "text": " وحَمَلَ "},
+{"end": "88.61", "start": "88.10", "text": " أَبِي "},
+{"end": "89.12", "start": "88.62", "text": " الحَلوَى، "},
+{"end": "89.80", "start": "89.13", "text": " وَدَخَلْنَا<br> "},
+
+
+{"end": "90.40", "start": "89.81", "text": " مَنْزِلَ "},
+{"end": "91.02", "start": "90.41", "text": " جَدِّي. "},
+
+
+
+
+                ],
+                14:[
+{"end": "91.68", "start": "91.04", "text": " سَلَّمْنَا  "},
+{"end": "92.18", "start": "91.69", "text": " عَلَيهَمْ، "},
+{"end": "93.16", "start": "92.19", "text": " ثُمَّ احتَفَلْنَا "},
+
+{"end": "93.79", "start": "93.17", "text": " مَعَهُمْ "},
+{"end": "94.69", "start": "94.00", "text": " بِحُصُولِ "},
+{"end": "95.04", "start": "94.70", "text": " أُمِّي عَلى "},
+{"end": "95.69", "start": "95.05", "text": " رُخْصَةِ "},
+{"end": "96.22", "start": "95.70", "text": " القِيَّادَةِ."},
+
+
+
+
+                ]		
+            };
+
+            createSubtitle(0,audioPlayer,start_data[0].start_time,start_data[0].end_time);
+            $("#replay").on("click",function(){
+                var page_id = $("#latest_slide").val();
+                createSubtitle(page_id,audioPlayer,start_data[page_id].start_time,start_data[page_id].end_time,true);
+            });
+
+
+            function createSubtitle(id,audioPlayer,start_time,end_time,play=false)
+            {
+                $("#subtitles").removeClass();
+                $("#subtitles").addClass("line centered page"+id)
+                audioPlayer.pause();
+                subtitles.innerText = '';
+                audioPlayer.currentTime = start_time;
+                if(id>0 || play===true){
+                    let play_time = setTimeout(function() {
+                        audioPlayer.play();
+                        $("#playpause > img").attr("src","stop-button.png");
+                    },500);
+                }
+
+                var element;
+                for (var i = 0; i < syncData[id].length; i++) {
+                    element = doc.createElement('span');
+                    element.setAttribute("id", "c_" +id+ i);
+                    element.innerHTML = syncData[id][i].text + " ";
+                    subtitles.appendChild(element);
+                }
+
+                audioPlayer.ontimeupdate = (event) => {
+                    syncData[id].forEach(function(element, index, array){
+
+                        var page_id = $("#latest_slide").val();
+
+                        if( page_id == 14 )
+                        document.getElementById("bb-nav-next").style.display = "none";
+                        
+                    
+                        if( page_id == 0 )
+                        document.getElementById("bb-nav-prev").style.display = "none";
+
+                        
+                        
+                        subtitles.children[index].style.color = '#363868';
+                       
+                        
+                        if( audioPlayer.currentTime >= element.start && audioPlayer.currentTime <= element.end )
+                            subtitles.children[index].style.color = '#b50808';
+
+                    });
+
+                    if(audioPlayer.currentTime>=end_time){
+                        audioPlayer.pause();
+                        syncData[id].forEach(function(element, index, array){
+
+                           
+                            
+                            subtitles.children[index].style.color = '#363868';
+                        });
+                        $("#playpause > img").attr("src","icons/play-button.png");
+                    }
+                };
+            }
+            var Page = (function() {
+                var config = {
+                        $bookBlock : $( '#bb-bookblock' ),
+                        $navNext : $( '#bb-nav-next' ),
+                        $navPrev : $( '#bb-nav-prev' ),
+                        $navFirst : $( '#bb-nav-first' ),
+                        $navLast : $( '#bb-nav-last' )
+                    },
+                    init = function() {
+                        config.$bookBlock.bookblock( {
+                            speed : 900,
+                            direction: 'rtl',
+                            shadowSides : 0.8,
+                            shadowFlip : 0.7,
+                            onEndFlip :function( old, page, isLimit ) {
+                                $(window).scrollTop(5);
+                                $("#latest_slide").val(page)
+                                if(page==0){
+                                    $('.bb-custom-icon-arrow-right').show();
+                                    //$('#bb-nav-prev').hide();
+                                }
+
+                                if(page == 1){
+                                   // $('#bb-nav-next').hide();
+                                    $('#bb-nav-prev').show();
+                                }
+                                else
+                                    $('#bb-nav-next').show();
+
+                                //audioPlayer.currentTime = start_data[page].start_time;
+                                createSubtitle(page,audioPlayer,start_data[page].start_time,start_data[page].end_time,true);
+                            }
+                        } );
+                        initEvents();
+                    },
+                    initEvents = function() {
+
+                        var $slides = config.$bookBlock.children();
+
+                        // add navigation events
+                        config.$navNext.on( 'click touchstart', function() {
+                            config.$bookBlock.bookblock( 'next' );
+                            return true;
+                        } );
+
+                        config.$navPrev.on( 'click touchstart', function() {
+                            config.$bookBlock.bookblock( 'prev' );
+                            return true;
+                        } );
+
+                        config.$navFirst.on( 'click touchstart', function() {
+                            config.$bookBlock.bookblock( 'first' );
+                            return false;
+                        } );
+
+                        config.$navLast.on( 'click touchstart', function() {
+                            config.$bookBlock.bookblock( 'last' );
+                            return false;
+                        } );
+
+                        // add swipe events
+                        $slides.on( {
+                            'swipeleft' : function( event ) {
+                                config.$bookBlock.bookblock( 'prev' );
+                                return false;
+                            },
+                            'swiperight' : function( event ) {
+                                config.$bookBlock.bookblock( 'next' );
+                                return false;
+                            }
+                        } );
+
+                        // add keyboard events
+                        $( document ).keydown( function(e) {
+                            var keyCode = e.keyCode || e.which,
+                                arrow = {
+                                    left : 37,
+                                    up : 38,
+                                    right : 39,
+                                    down : 40
+                                };
+
+                            switch (keyCode) {
+                                case arrow.left:
+                                    config.$bookBlock.bookblock( 'next' );
+                                    break;
+                                case arrow.right:
+                                    config.$bookBlock.bookblock( 'prev' );
+                                    break;
+                            }
+                        } );
+                    };
+
+                return { init : init };
+
+            })();
+            Page.init();
+        }(window, document));
+    </script>
+    <script>
+        $("#bb-nav-next ").on('click', function() {
+       var $height = $('.bb-custom-side').height();
+        $('.bb-bookblock').css('height', $height);
+        });
+
+    </script>
+
+</body>
+</html>
